@@ -2,7 +2,7 @@ type ImageCache = Record<string, Promise<ImageData>>;
 
 const CACHE: ImageCache = {};
 
-const _loadImage = async (filename: string): Promise<ImageData> => {
+const _loadImage = async (filename: string, prefix: string | null = null, suffix: string | null = null): Promise<ImageData> => {
   return new Promise((resolve, reject) => {
     const canvas: HTMLCanvasElement = document.createElement('canvas');
     canvas.style.display = 'none';
@@ -32,11 +32,22 @@ const _loadImage = async (filename: string): Promise<ImageData> => {
     img.onerror = () => {
       reject(`Failed to load image ${img.src}`);
     };
-    img.src = `png/${filename}.png`;
+
+    img.src = filename;
   });
 };
 
 const loadImage = async (filename: string): Promise<ImageData> => {
+  filename = `png/${filename}.png`;
+  if (CACHE[filename] != null) {
+    return CACHE[filename];
+  }
+  const image = _loadImage(filename);
+  CACHE[filename] = image;
+  return image;
+};
+
+const loadImageRaw = async (filename: string): Promise<ImageData> => {
   if (CACHE[filename] != null) {
     return CACHE[filename];
   }
@@ -46,5 +57,6 @@ const loadImage = async (filename: string): Promise<ImageData> => {
 };
 
 export default {
-  loadImage
+  loadImage,
+  loadImageRaw
 };

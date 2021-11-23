@@ -1,9 +1,9 @@
+import ImagePreloader from '../graphics/images/ImagePreloader';
 import GameRenderer from '../graphics/renderers/GameRenderer';
 import MapFactory from '../maps/MapFactory';
 import MapModel from '../maps/MapModel';
 import { contains, isTileRevealed } from '../maps/MapUtils';
 import Music from '../sounds/Music';
-import TileSet from '../types/TileSet';
 import { GameScreen } from '../types/types';
 import PlayerUnitController from '../units/controllers/PlayerUnitController';
 import UnitClass from '../units/UnitClass';
@@ -36,7 +36,7 @@ const initialize = async () => {
   const evilTheme = await Music.loadMusic('evil');
   Music.playMusic(evilTheme);
   await render();
-  await TileSet.preload();
+  ImagePreloader.preloadImages();
 };
 
 const render = async () => renderer.render();
