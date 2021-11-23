@@ -2,7 +2,7 @@ type ImageCache = Record<string, Promise<ImageData>>;
 
 const CACHE: ImageCache = {};
 
-const _loadImage = async (filename: string, prefix: string | null = null, suffix: string | null = null): Promise<ImageData> => {
+const _loadImage = async (filename: string): Promise<ImageData> => {
   return new Promise((resolve, reject) => {
     const canvas: HTMLCanvasElement = document.createElement('canvas');
     canvas.style.display = 'none';
