@@ -11,13 +11,13 @@
     "RED": "FLOOR",
     "YELLOW": "FLOOR",
     "DARK_BROWN": "FLOOR",
-    "LIGHT_BROWN": "FLOOR"
+    "DARK_GREEN": "FLOOR"
   },
   "enemyColors": {
     "DARK_GREEN": "grunt"
   },
   "itemColors": {
-    "YELLOW": "potion"
+    "YELLOW": "life_potion"
   },
   "equipmentColors": {
     "DARK_BROWN": "bronze_sword"
