@@ -6,7 +6,8 @@
   "height": 28,
   "enemies": {
     "soldier": 8,
-    "golem": 5
+    "golem": 5,
+    "wizard": 1
   },
   "equipment": {
     "fire_sword": 1
